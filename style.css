@@ -30,7 +30,7 @@ body {
   width: 39px;
   height: 60px;
   position: absolute;
-  background-image: url('./doors.jpg');
+  background-image: url('./data/doors.jpg');
   background-size: contain;
   background-repeat: no-repeat;
   bottom: 0px;
@@ -43,7 +43,7 @@ body {
 
 .floor {
   /* background-color: #cad1ca; */
-  background-image: url('./wall.jfif');
+  background-image: url('./data/wall.jfif');
   background-size: contain;
   border: 1px solid #051b05;
   padding: 10px 22px;
