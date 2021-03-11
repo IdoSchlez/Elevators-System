@@ -16,6 +16,8 @@
 
 ---
 
+![Example](data/video.gif)
+
 ## Functional requirements:
 
 _The 7-storey building includes the ground floor and has 2 elevators._
