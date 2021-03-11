@@ -1,18 +1,19 @@
-var elevatorA = {
+
+let elevatorA = {
     queue : [],
     currFloor : 0,
     isAvailable: true,
-    id: "A",
-    add : function(e) {
+    elevatorId: "A",
+    addElevatorReqToQueue : function(e) {
         this.queue.push(e)
     },
-    isEmptyQueue : function() {
+    isQueueEmpty : function() {
         return this.queue.length === 0;
     },
-    moveElevatorToNextFloor: function(){
-            elevator = this.id;
-            const e = this.queue.shift();
-            const newfloor = e.target.value;
+    moveElevator: function(){
+            const elevator = this.elevatorId;
+            const currEventFromQueue = this.queue.shift();
+            const newfloor = currEventFromQueue.target.value;
             const motionTime =  Math.abs(newfloor-this.currFloor) * 500;
             const newPos = newfloor * 60;
             const currElevator = document.getElementById(`elevator${elevator}`);
@@ -21,46 +22,46 @@ var elevatorA = {
             currElevator.style.bottom = `${newPos}px`;
             this.currFloor = newfloor;
             setTimeout(() =>{
-                const mySound = document.getElementById(`sound${elevator}`); 
-                mySound.play();
-                e.target.style.background = "#4caf50";
+                const floorArivalSound = document.getElementById(`sound${elevator}`); 
+                floorArivalSound.play();
+                currEventFromQueue.target.style.background = "#4caf50";
             }, motionTime);
             setTimeout(() => {
-                if(this.isEmptyQueue()){
+                if(this.isQueueEmpty()){
                     this.isAvailable = true;
                 }else{
-                    this.moveElevatorToNextFloor();
+                    this.moveElevator();
                 }
             }, motionTime + 2000);
             
     },
-    serve : function(e) {
+    handleElevatorReq : function(e) {
         e.target.style.background = "red";
         if(this.isAvailable){
             this.isAvailable = false;
-            this.moveElevatorToNextFloor();
+            this.moveElevator();
         }
     },
-    getLast : function() {
-        return this.queue[this.queue.length - 1]
+    getLastFloor : function() {
+        return this.queue[this.queue.length - 1];
     }
 }
 
-var elevatorB = {
+let elevatorB = {
     queue : [],
     currFloor : 0,
     isAvailable: true,
-    id: "B",
-    add : function(e) {
+    elevatorId: "B",
+    addElevatorReqToQueue : function(e) {
         this.queue.push(e)
     },
-    isEmptyQueue : function() {
+    isQueueEmpty : function() {
         return this.queue.length === 0;
     },
-    moveElevatorToNextFloor: function(){
-            elevator = this.id;
-            const e = this.queue.shift();
-            const newfloor = e.target.value;
+    moveElevator: function(){
+            const elevator = this.elevatorId;
+            const currEventFromQueue = this.queue.shift();
+            const newfloor = currEventFromQueue.target.value;
             const motionTime =  Math.abs(newfloor-this.currFloor) * 500;
             const newPos = newfloor * 60;
             const currElevator = document.getElementById(`elevator${elevator}`);
@@ -69,28 +70,28 @@ var elevatorB = {
             currElevator.style.bottom = `${newPos}px`;
             this.currFloor = newfloor;
             setTimeout(() =>{
-                const mySound = document.getElementById(`sound${elevator}`); 
-                mySound.play();
-                e.target.style.background = "#4caf50";
+                const floorArivalSound = document.getElementById(`sound${elevator}`); 
+                floorArivalSound.play();
+                currEventFromQueue.target.style.background = "#4caf50";
             }, motionTime);
             setTimeout(() => {
-                if(this.isEmptyQueue()){
+                if(this.isQueueEmpty()){
                     this.isAvailable = true;
                 }else{
-                    this.moveElevatorToNextFloor();
+                    this.moveElevator();
                 }
             }, motionTime + 2000);
             
     },
-    serve : function(e) {
+    handleElevatorReq : function(e) {
         e.target.style.background = "red";
         if(this.isAvailable){
             this.isAvailable = false;
-            this.moveElevatorToNextFloor();
+            this.moveElevator();
         }
     },
-    getLast : function() {
-        return this.queue[this.queue.length - 1]
+    getLastFloor : function() {
+        return this.queue[this.queue.length - 1];
     }
 }
 
@@ -113,49 +114,43 @@ f3Button.addEventListener("click", findAvailableElevator);
 f4Button.addEventListener("click", findAvailableElevator);
 f5Button.addEventListener("click", findAvailableElevator);
 f6Button.addEventListener("click", findAvailableElevator);
-//functions
-function onElavatorFinished(elevator, e){
-            const mySound = document.getElementById(`sound${elevator}`);  
-            mySound.play();
-            e.target.style.background = "#4caf50";
 
-}
-
+//function
 function findAvailableElevator(e) {
     e.preventDefault();
     const floorNum = parseInt(e.target.value);
-    const aIsAvailable = elevatorA.isAvailable;
-    const bIsAvailable = elevatorB.isAvailable;
-    if (aIsAvailable || bIsAvailable){
-        if (aIsAvailable && bIsAvailable){
+    const elevatorAIsAvailable = elevatorA.isAvailable;
+    const elevatorBIsAvailable = elevatorB.isAvailable;
+    if (elevatorAIsAvailable || elevatorBIsAvailable){
+        if (elevatorAIsAvailable && elevatorBIsAvailable){
             if (Math.abs(elevatorA.currFloor - floorNum) >= Math.abs(elevatorB.currFloor - floorNum)){
-                elevatorB.add(e);
-                elevatorB.serve(e);
+                elevatorB.addElevatorReqToQueue(e);
+                elevatorB.handleElevatorReq(e);
             }else{
-                elevatorA.add(e);
-                elevatorA.serve(e);
+                elevatorA.addElevatorReqToQueue(e);
+                elevatorA.handleElevatorReq(e);
             }
-        }else if (aIsAvailable){
-            elevatorA.add(e);
-            elevatorA.serve(e);
+        }else if (elevatorAIsAvailable){
+            elevatorA.addElevatorReqToQueue(e);
+            elevatorA.handleElevatorReq(e);
         }else {
-            elevatorB.add(e);
-            elevatorB.serve(e);
+            elevatorB.addElevatorReqToQueue(e);
+            elevatorB.handleElevatorReq(e);
         }
     }else {
         if (elevatorA.queue.length > elevatorB.queue.length){
-            elevatorB.add(e);
-            elevatorB.serve(e);
+            elevatorB.addElevatorReqToQueue(e);
+            elevatorB.handleElevatorReq(e);
         }else if (elevatorA.queue.length < elevatorB.queue.length){
-            elevatorA.add(e);
-            elevatorA.serve(e);
+            elevatorA.addElevatorReqToQueue(e);
+            elevatorA.handleElevatorReq(e);
         }else {
-            if (Math.abs(elevatorA.getLast() - floorNum) >= Math.abs(elevatorB.getLast() - floorNum)){
-                elevatorB.add(e);
-                elevatorB.serve(e);
+            if (Math.abs(elevatorA.getLastFloor() - floorNum) >= Math.abs(elevatorB.getLastFloor() - floorNum)){
+                elevatorB.addElevatorReqToQueue(e);
+                elevatorB.handleElevatorReq(e);
             }else {
-                elevatorA.add(e);
-                elevatorA.serve(e);
+                elevatorA.addElevatorReqToQueue(e);
+                elevatorA.handleElevatorReq(e);
             } 
         }
     }

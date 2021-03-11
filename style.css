@@ -42,7 +42,6 @@ body {
 }
 
 .floor {
-  /* background-color: #cad1ca; */
   background-image: url('./data/wall.jfif');
   background-size: contain;
   border: 1px solid #051b05;
@@ -60,12 +59,6 @@ body {
   border-radius: 2px;
   padding: 5px 5px;
   background-color: #4caf50;
-}
-
-.p-floor {
-  margin-top: 5px;
-  text-align: center;
-  font-size: 0.8rem;
 }
 
 .elevetors {
