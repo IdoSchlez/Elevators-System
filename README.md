@@ -20,9 +20,9 @@
 
 _The 7-storey building includes the ground floor and has 2 elevators._
 
-- 1. When loading the page, the structure of the building and its elevators will be displayed.
-- 2. An elevator call button will be displayed on each floor. The button will be painted green.
-- 3. When calling for an elevator, the following steps will be performed:
+ 1. When loading the page, the structure of the building and its elevators will be displayed.
+ 2. An elevator call button will be displayed on each floor. The button will be painted green.
+ 3. When calling for an elevator, the following steps will be performed:
   - The floor button will turn red.
   - The nearest elevator must be identified (there may not be a lift available at the time of reading)
   - Send the elevator to the relevant floor.
