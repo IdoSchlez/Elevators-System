@@ -1,0 +1,56 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #92a8d1;
+}
+
+#elevator-boxA,
+#elevator-boxB {
+  display: inline-block;
+  width: 50px;
+  height: 420px;
+  position: relative;
+  background: rgb(56, 56, 52);
+}
+#elevator-boxC {
+  display: inline-table;
+  bottom: 30px;
+}
+
+#elevatorA,
+#elevatorB {
+  display: inline-block;
+  width: 50px;
+  height: 60px;
+  position: absolute;
+  background: gray;
+  bottom: 0px;
+}
+
+.btn-group {
+  display: inline-block;
+}
+
+.btn-group button {
+  margin-top: 10px;
+  background-color: #4caf50; /* Green background */
+  border: 1px solid green; /* Green border */
+  color: white; /* White text */
+  padding: 10px 22px; /* Some padding */
+  cursor: pointer; /* Pointer/hand icon */
+  width: 50%; /* Set a width if needed */
+  display: block; /* Make the buttons appear below each other */
+  height: 55px;
+}
+
+.changeColorRed {
+  background-color: red;
+}
+
+.changeColorGreen {
+  background-color: green;
+}

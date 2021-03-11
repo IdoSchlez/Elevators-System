@@ -1,0 +1,77 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #92a8d1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  font-family: 'Roboto Slab', serif;
+}
+
+#elevator-boxA,
+#elevator-boxB {
+  display: inline-block;
+  width: 50px;
+  height: 420px;
+  position: relative;
+  background: rgb(56, 56, 52);
+}
+#elevator-boxC {
+  display: inline-table;
+  bottom: 30px;
+}
+
+#elevatorA,
+#elevatorB {
+  display: inline-block;
+  width: 50px;
+  height: 60px;
+  position: absolute;
+  background: gray;
+  bottom: 0px;
+}
+
+.btn-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.floor {
+  background-color: #4caf50; /*Green background*/
+  border: 1px solid #051b05; /* Green border */
+  color: white; /* White text */
+  padding: 10px 22px; /* Some padding */
+  cursor: pointer; /* Pointer/hand icon */
+  width: 100%; /* Set a width if needed */
+  height: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.btn-floor {
+  border: grey solid 2px;
+  border-radius: 2px;
+  padding: 5px 5px;
+  background-color: #4caf50;
+}
+
+.p-floor {
+  margin-top: 5px;
+  text-align: center;
+  font-size: 0.8rem;
+}
+
+.elevetors {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 10px;
+}
