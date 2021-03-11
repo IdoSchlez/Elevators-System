@@ -1,4 +1,4 @@
-﻿# Arbox - The 7-storey building Home Assignment 🚀
+﻿# Arbox - The 7-storey building Home Assignment 
 
 ### This project simulates an elevators system.
 
